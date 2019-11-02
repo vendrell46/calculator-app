@@ -75,6 +75,7 @@ dependencies {
     androidTestImplementation "com.squareup.rx.idler:rx2-idler:0.9.1"
     androidTestImplementation "com.squareup.rx.idler:rx1-idler:0.9.1"
     androidTestImplementation "io.cucumber:cucumber-android:4.3.0"
+    androidTestImplementation "org.koin:koin-core:2.0.1"
 }
 
 Properties props = new Properties()
