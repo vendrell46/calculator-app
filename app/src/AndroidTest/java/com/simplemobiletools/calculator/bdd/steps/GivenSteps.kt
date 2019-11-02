@@ -10,6 +10,13 @@ class GivenSteps {
     @Given("^app is ready to use$")
     fun app_started() {
         mainPage.mainPageLoaded()
-        Thread.sleep(5000)
+    }
+
+    @Given("^I am on Settings page$")
+    fun i_am_on_settings_page() {
+        mainPage.run {
+            app_started()
+            openSettings()
+        }
     }
 }
