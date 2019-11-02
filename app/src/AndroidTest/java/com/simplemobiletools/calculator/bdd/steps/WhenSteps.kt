@@ -23,4 +23,9 @@ class WhenSteps {
     fun i_click_clear_btn() {
         mainPage.clickClearBtn()
     }
+
+    @When("^I long click the clear button$")
+    fun i_long_click_clear_btn() {
+        mainPage.longClickClearBtn()
+    }
 }
