@@ -9,9 +9,9 @@ class ThenSteps {
     private val mainPage = MainPage()
     private val customizeColorsPage = CustomizeColorsPage()
 
-    @Then("^check result$")
-    fun check_result() {
-        mainPage.checkResult()
+    @Then("^check number displayed is (.*)$")
+    fun check_result(number: String) {
+        mainPage.checkNumberDisplayed(number)
     }
 
     @Then("^all available theme options are displayed$")

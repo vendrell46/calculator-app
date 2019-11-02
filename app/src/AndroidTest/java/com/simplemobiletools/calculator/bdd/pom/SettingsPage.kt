@@ -9,5 +9,7 @@ class SettingsPage {
 
     private val customizeColorsOption = onView(withId(R.id.settings_customize_colors_holder))
 
-    fun clickCustomizeColorsOption() = customizeColorsOption?.perform( click() )
+    fun clickCustomizeColorsOption() {
+        customizeColorsOption.perform( click() )
+    }
 }

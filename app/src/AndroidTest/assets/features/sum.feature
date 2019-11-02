@@ -6,4 +6,4 @@ Feature: Sum
   Scenario: Sum two numbers
     Given app is ready to use
     When sum two numbers
-    Then check result
+    Then check number displayed is 6

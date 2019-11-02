@@ -18,4 +18,9 @@ class WhenSteps {
     fun navigate_to_customize_colors_page() {
         settingsPage.clickCustomizeColorsOption()
     }
+
+    @When("^I click clear button$")
+    fun i_click_clear_btn() {
+        mainPage.clickClearBtn()
+    }
 }

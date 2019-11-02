@@ -9,6 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.simplemobiletools.calculator.R
+import com.simplemobiletools.calculator.bdd.action.Action
 
 class MainPage {
 
@@ -20,18 +21,46 @@ class MainPage {
     private val menu = onView(withContentDescription("More options"))
     private val settings = onView(withText(R.string.settings))
     private val about = onView(withText(R.string.about))
+    private val clearBtn = onView(withId(R.id.btn_clear))
+
+    var displayedNumber = "0"
 
     fun mainPageLoaded() {
         resultField.check(matches(isDisplayed()))
     }
 
-    private fun clickNumber2() = number2.perform( click() )
+    fun clickNumber2() {
+        number2.perform( click() )
+        updateDisplayedNumber("2", Action.ADD)
+    }
 
-    private fun clickNumber4() = number4.perform( click() )
+    fun clickNumber4() {
+        number4.perform( click() )
+        updateDisplayedNumber("4", Action.ADD)
+    }
+
+    private fun updateDisplayedNumber(number: String? = null, action: Action) {
+        when (action) {
+            Action.ADD -> {
+                if (number == "0") {
+                    displayedNumber = number
+                } else {
+                    displayedNumber += number
+                }
+            }
+            Action.CLEAR -> displayedNumber.dropLast(1)
+            Action.CLEAR_ALL -> displayedNumber = "0"
+        }
+    }
 
     private fun clickSumBtn() = sumBtn.perform( click() )
 
     private fun clickEqualsBtn() = equalsBtn.perform( click() )
+
+    fun clickClearBtn() {
+        clearBtn.perform( click() )
+        updateDisplayedNumber(action = Action.CLEAR)
+    }
 
     fun openSettings() {
         menu.perform( click() )
@@ -45,7 +74,7 @@ class MainPage {
         clickEqualsBtn()
     }
 
-    fun checkResult() {
-        resultField.check(matches(withText("6")))
+    fun checkNumberDisplayed(number: String) {
+        resultField.check(matches(withText(number)))
     }
 }
