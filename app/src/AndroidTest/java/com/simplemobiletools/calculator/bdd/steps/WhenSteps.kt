@@ -4,11 +4,13 @@ import com.simplemobiletools.calculator.bdd.action.KeyNumber
 import com.simplemobiletools.calculator.bdd.pom.MainPage
 import com.simplemobiletools.calculator.bdd.pom.SettingsPage
 import cucumber.api.java.en.When
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class WhenSteps {
+class WhenSteps : KoinComponent {
 
-    private val mainPage = MainPage()
-    private val settingsPage = SettingsPage()
+    private val mainPage: MainPage by inject()
+    private val settingsPage: SettingsPage by inject()
 
     @When("^sum two numbers?(?:, (.*) and (.*)?)?$")
     fun sum(firstNumber: KeyNumber?, secondNumber: KeyNumber?) {

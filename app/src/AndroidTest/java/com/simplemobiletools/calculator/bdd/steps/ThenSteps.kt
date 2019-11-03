@@ -3,11 +3,13 @@ package com.simplemobiletools.calculator.bdd.steps
 import com.simplemobiletools.calculator.bdd.pom.CustomizeColorsPage
 import com.simplemobiletools.calculator.bdd.pom.MainPage
 import cucumber.api.java.en.Then
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class ThenSteps {
+class ThenSteps : KoinComponent {
 
-    private val mainPage = MainPage()
-    private val customizeColorsPage = CustomizeColorsPage()
+    private val mainPage: MainPage by inject()
+    private val customizeColorsPage: CustomizeColorsPage by inject()
 
     @Then("^check number displayed is (.*)$")
     fun check_result(number: String) {

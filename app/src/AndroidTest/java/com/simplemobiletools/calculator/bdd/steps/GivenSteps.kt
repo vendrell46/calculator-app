@@ -3,10 +3,12 @@ package com.simplemobiletools.calculator.bdd.steps
 import com.simplemobiletools.calculator.bdd.action.KeyNumber
 import com.simplemobiletools.calculator.bdd.pom.MainPage
 import cucumber.api.java.en.Given
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class GivenSteps {
+class GivenSteps : KoinComponent {
 
-    private val mainPage = MainPage()
+    private val mainPage: MainPage by inject()
 
     @Given("^app is ready to use$")
     fun app_started() {
