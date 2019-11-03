@@ -31,8 +31,8 @@ class MainPage {
         resultField.check(matches(isDisplayed()))
     }
 
-    fun clickNumberKey(keyNumber: KeyNumber) {
-        key(keyNumber.id).perform(click())
+    fun clickNumberKey(keyNumber: KeyNumber?) {
+        key(keyNumber!!.id).perform(click())
         updateDisplay(keyNumber.string, Action.ADD)
     }
 
@@ -60,10 +60,31 @@ class MainPage {
         settings.perform( click() )
     }
 
-    fun sumNumbers() {
-        clickNumberKey(KeyNumber.TWO)
+    fun sumNumbers(firstNumber: KeyNumber? = KeyNumber.TWO, secondNumber: KeyNumber? = KeyNumber.FOUR) {
+        clickNumberKey(firstNumber)
         clickOperationKey(KeyOperations.PLUS)
-        clickNumberKey(KeyNumber.FOUR)
+        clickNumberKey(secondNumber)
+        clickOperationKey(KeyOperations.EQUALS)
+    }
+
+    fun subtractNumbers(firstNumber: KeyNumber? = KeyNumber.EIGHT, secondNumber: KeyNumber? = KeyNumber.FOUR) {
+        clickNumberKey(firstNumber)
+        clickOperationKey(KeyOperations.MINUS)
+        clickNumberKey(secondNumber)
+        clickOperationKey(KeyOperations.EQUALS)
+    }
+
+    fun multiplyNumbers(firstNumber: KeyNumber? = KeyNumber.TWO, secondNumber: KeyNumber? = KeyNumber.FIVE) {
+        clickNumberKey(firstNumber)
+        clickOperationKey(KeyOperations.MULTIPLY)
+        clickNumberKey(secondNumber)
+        clickOperationKey(KeyOperations.EQUALS)
+    }
+
+    fun divideNumbers(firstNumber: KeyNumber? = KeyNumber.SIX, secondNumber: KeyNumber? = KeyNumber.THREE) {
+        clickNumberKey(firstNumber)
+        clickOperationKey(KeyOperations.DIVIDE)
+        clickNumberKey(secondNumber)
         clickOperationKey(KeyOperations.EQUALS)
     }
 
