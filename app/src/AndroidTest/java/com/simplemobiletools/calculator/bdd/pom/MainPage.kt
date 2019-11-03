@@ -46,18 +46,18 @@ class MainPage {
     }
 
     fun clickClearBtn() {
-        clearBtn.perform( click() )
+        clearBtn.perform(click())
         updateDisplay(action = Action.CLEAR)
     }
 
     fun longClickClearBtn() {
-        clearBtn.perform( longClick() )
+        clearBtn.perform(longClick())
         updateDisplay(action = Action.CLEAR_ALL)
     }
 
     fun openSettings() {
-        menu.perform( click() )
-        settings.perform( click() )
+        menu.perform(click())
+        settings.perform(click())
     }
 
     fun sumNumbers(firstNumber: KeyNumber? = KeyNumber.TWO, secondNumber: KeyNumber? = KeyNumber.FOUR) {

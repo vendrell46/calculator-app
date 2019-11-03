@@ -15,7 +15,7 @@ class CustomizeColorsPage {
     private fun colorOption(theme: String): ViewInteraction = onView(withText(theme))
 
 
-    private fun clickThemeOption() = themeOption.perform( click() )
+    private fun clickThemeOption() = themeOption.perform(click())
 
     fun allThemeOptionsAvailableDisplayed() {
         clickThemeOption()
