@@ -1,6 +1,7 @@
 package com.simplemobiletools.calculator.bdd.pom
 
 
+import androidx.annotation.IdRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.longClick
@@ -11,13 +12,13 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.simplemobiletools.calculator.R
 import com.simplemobiletools.calculator.bdd.action.Action
+import com.simplemobiletools.calculator.bdd.action.KeyNumber
+import com.simplemobiletools.calculator.bdd.action.KeyOperations
+import com.simplemobiletools.calculator.bdd.action.KeyOthers
 
 class MainPage {
 
-    private val number2 = onView(withId(R.id.btn_2))
-    private val number4 = onView(withId(R.id.btn_4))
-    private val sumBtn = onView(withId(R.id.btn_plus))
-    private val equalsBtn = onView(withId(R.id.btn_equals))
+    private fun key(@IdRes id: Int) = onView(withId(id))
     private val resultField = onView(withId(R.id.result))
     private val menu = onView(withContentDescription("More options"))
     private val settings = onView(withText(R.string.settings))
@@ -30,17 +31,48 @@ class MainPage {
         resultField.check(matches(isDisplayed()))
     }
 
-    fun clickNumber2() {
-        number2.perform( click() )
-        updateDisplayedNumber("2", Action.ADD)
+    fun clickNumberKey(keyNumber: KeyNumber) {
+        key(keyNumber.id).perform(click())
+        updateDisplay(keyNumber.string, Action.ADD)
     }
 
-    fun clickNumber4() {
-        number4.perform( click() )
-        updateDisplayedNumber("4", Action.ADD)
+    private fun clickOperationKey(keyOperations: KeyOperations) {
+        key(keyOperations.id).perform(click())
+        updateDisplay(action = Action.OPERATION)
     }
 
-    private fun updateDisplayedNumber(number: String? = null, action: Action) {
+    fun clickDecimal(keyOthers: KeyOthers) {
+        key(keyOthers.id).perform(click())
+    }
+
+    fun clickClearBtn() {
+        clearBtn.perform( click() )
+        updateDisplay(action = Action.CLEAR)
+    }
+
+    fun longClickClearBtn() {
+        clearBtn.perform( longClick() )
+        updateDisplay(action = Action.CLEAR_ALL)
+    }
+
+    fun openSettings() {
+        menu.perform( click() )
+        settings.perform( click() )
+    }
+
+    fun sumNumbers() {
+        clickNumberKey(KeyNumber.TWO)
+        clickOperationKey(KeyOperations.PLUS)
+        clickNumberKey(KeyNumber.FOUR)
+        clickOperationKey(KeyOperations.EQUALS)
+    }
+
+    fun checkNumberDisplayed(number: String) {
+        resultField.check(matches(withText(number)))
+    }
+
+    private fun updateDisplay(number: String? = null, action: Action) {
+        val reset = "0"
         when (action) {
             Action.ADD -> {
                 if (number == "0") {
@@ -50,36 +82,8 @@ class MainPage {
                 }
             }
             Action.CLEAR -> displayedNumber.dropLast(1)
-            Action.CLEAR_ALL -> displayedNumber = "0"
+            Action.CLEAR_ALL,
+            Action.OPERATION -> displayedNumber = reset
         }
-    }
-
-    private fun clickSumBtn() = sumBtn.perform( click() )
-
-    private fun clickEqualsBtn() = equalsBtn.perform( click() )
-
-    fun clickClearBtn() {
-        clearBtn.perform( click() )
-        updateDisplayedNumber(action = Action.CLEAR)
-    }
-
-    fun longClickClearBtn() {
-        clearBtn.perform( longClick() )
-    }
-
-    fun openSettings() {
-        menu.perform( click() )
-        settings.perform( click() )
-    }
-
-    fun sumNumbers() {
-        clickNumber2()
-        clickSumBtn()
-        clickNumber4()
-        clickEqualsBtn()
-    }
-
-    fun checkNumberDisplayed(number: String) {
-        resultField.check(matches(withText(number)))
     }
 }

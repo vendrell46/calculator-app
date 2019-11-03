@@ -1,5 +1,6 @@
 package com.simplemobiletools.calculator.bdd.steps
 
+import com.simplemobiletools.calculator.bdd.action.KeyNumber
 import com.simplemobiletools.calculator.bdd.pom.MainPage
 import cucumber.api.java.en.Given
 
@@ -22,8 +23,8 @@ class GivenSteps {
     fun i_have_two_digits_entered() {
         app_started()
         mainPage.run {
-            clickNumber4()
-            clickNumber2()
+            clickNumberKey(KeyNumber.FOUR)
+            clickNumberKey(KeyNumber.TWO)
         }
     }
 }
