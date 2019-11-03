@@ -1,9 +1,9 @@
-Feature: All theme options are displayed
+Feature: Checking all theme options available
 
   @Ready
-  @Settings @CustomizeColors
+  @Settings
   @Regression
-  Scenario: Verifying all theme options are displayed
+  Scenario: Checking all theme options available
     Given I am on Settings page
     When I navigate to Customize colors page
     Then all available theme options are displayed
