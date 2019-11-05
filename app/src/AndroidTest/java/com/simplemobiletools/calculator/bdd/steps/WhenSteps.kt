@@ -118,4 +118,9 @@ class WhenSteps : KoinComponent {
     fun i_long_click_clear_btn() {
         mainPage.longClickClearBtn()
     }
+
+    @When("^I click key number (.*)$")
+    fun i_click_key_number(keyNumber: KeyNumber) {
+        mainPage.clickNumberKey(keyNumber)
+    }
 }
