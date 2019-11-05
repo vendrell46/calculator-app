@@ -41,8 +41,8 @@ class MainPage {
         updateDisplay(action = Action.OPERATION)
     }
 
-    fun clickDecimal(keyOthers: KeyOthers) {
-        key(keyOthers.id).perform(click())
+    private fun clickDecimalKey() {
+        key(KeyOthers.DECIMAL.id).perform(click())
     }
 
     fun clickClearBtn() {
@@ -53,6 +53,13 @@ class MainPage {
     fun longClickClearBtn() {
         clearBtn.perform(longClick())
         updateDisplay(action = Action.CLEAR_ALL)
+    }
+
+    fun enterDecimalNumber(number: KeyNumber, firstDecimal: KeyNumber, secondDecimal: KeyNumber = KeyNumber.ZERO) {
+        clickNumberKey(number)
+        clickDecimalKey()
+        clickNumberKey(firstDecimal)
+        clickNumberKey(secondDecimal)
     }
 
     fun openSettings() {

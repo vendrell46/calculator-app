@@ -13,9 +13,18 @@ class WhenSteps : KoinComponent {
     private val mainPage: MainPage by inject()
     private val settingsPage: SettingsPage by inject()
 
-    @When("^sum two numbers?(?:, (.*) and (.*)?)?$")
+    @When("^sum two numbers?(?:, (.*) plus (.*)?)?$")
     fun sum(firstNumber: KeyNumber?, secondNumber: KeyNumber?) {
         mainPage.operateNumbers(KeyOperations.PLUS, firstNumber, secondNumber)
+    }
+
+    @When("^sum two decimal numbers, 3.3 plus 1.7$")
+    fun sum_decimal_numbers() {
+        mainPage.run {
+            enterDecimalNumber(KeyNumber.THREE, KeyNumber.SEVEN)
+            clickOperationKey(KeyOperations.PLUS)
+            enterDecimalNumber(KeyNumber.ONE, KeyNumber.SEVEN)
+        }
     }
 
     @When("^sum (.*) to a negative (.*)?$")
@@ -26,9 +35,18 @@ class WhenSteps : KoinComponent {
         }
     }
 
-    @When("^subtract two numbers?(?:, (.*) and (.*)?)?$")
+    @When("^subtract two numbers?(?:, (.*) minus (.*)?)?$")
     fun subtract_two_numbers(firstNumber: KeyNumber?, secondNumber: KeyNumber?) {
         mainPage.operateNumbers(KeyOperations.MINUS, firstNumber, secondNumber)
+    }
+
+    @When("^subtract two decimal numbers, 4.5 minus 1.5$")
+    fun subtract_two_numbers_with_decimals() {
+        mainPage.run {
+            enterDecimalNumber(KeyNumber.FOUR, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.MINUS)
+            enterDecimalNumber(KeyNumber.ONE, KeyNumber.FIVE)
+        }
     }
 
     @When("^subtract (.*) to a negative (.*)?$")
@@ -44,6 +62,15 @@ class WhenSteps : KoinComponent {
         mainPage.operateNumbers(KeyOperations.MULTIPLY, firstNumber, secondNumber)
     }
 
+    @When("^multiply decimal numbers 2.5 and 1.5$")
+    fun multiply_two_numbers_with_decimals() {
+        mainPage.run {
+            enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.MULTIPLY)
+            enterDecimalNumber(KeyNumber.ONE, KeyNumber.FIVE)
+        }
+    }
+
     @When("^multiply (.*) by a negative (.*)?$")
     fun multiply_with_negative_number(number: KeyNumber, negativeNumber: KeyNumber) {
         mainPage.run {
@@ -55,6 +82,15 @@ class WhenSteps : KoinComponent {
     @When("^divide two numbers?(?:, (.*) and (.*)?)?$")
     fun divide_two_numbers(firstNumber: KeyNumber?, secondNumber: KeyNumber?) {
         mainPage.operateNumbers(KeyOperations.DIVIDE, firstNumber, secondNumber)
+    }
+
+    @When("^divide decimal number 2.5 by itself$")
+    fun divide_two_numbers_with_decimals() {
+        mainPage.run {
+            enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.DIVIDE)
+            enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
+        }
     }
 
     @When("^divide by (.*) a negative (.*)?$")
@@ -70,6 +106,15 @@ class WhenSteps : KoinComponent {
         mainPage.operateNumbers(KeyOperations.PERCENT, firstNumber, secondNumber)
     }
 
+    @When("^I calculate percentage, 2.5 percent of (.*)$")
+    fun calculate_percentage_decimal_number(number: KeyNumber) {
+        mainPage.run {
+            enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.PERCENT)
+            clickNumberKey(number)
+        }
+    }
+
     @When("^I calculate percentage of (.*) with negative (.*)$")
     fun percentage_with_negative_number(number: KeyNumber, negativeNumber: KeyNumber) {
         mainPage.run {
@@ -83,6 +128,15 @@ class WhenSteps : KoinComponent {
         mainPage.operateNumbers(KeyOperations.POWER, firstNumber, secondNumber)
     }
 
+    @When("^I calculate to the power of (.*) decimal number 2.5$")
+    fun calculate_power_of_decimal_number(number: KeyNumber) {
+        mainPage.run {
+            enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.POWER)
+            clickNumberKey(number)
+        }
+    }
+
     @When("^I calculate negative (.*) to the power of (.*)$")
     fun calculate_power_of_negative_number(negativeNumber: KeyNumber, number: KeyNumber) {
         mainPage.run {
@@ -94,6 +148,14 @@ class WhenSteps : KoinComponent {
     @When("^I calculate root of (.*)$")
     fun calculate_root_of(number: KeyNumber) {
         mainPage.calculateRootOf(number)
+    }
+
+    @When("^I calculate root with decimal number 4.9$")
+    fun calculate_root_of_number_with_decimals() {
+        mainPage.run {
+            enterDecimalNumber(KeyNumber.FOUR, KeyNumber.NINE)
+            clickOperationKey(KeyOperations.ROOT)
+        }
     }
 
     @When("^I calculate root with negative (.*)$")
