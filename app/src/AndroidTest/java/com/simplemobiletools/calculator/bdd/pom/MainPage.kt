@@ -36,7 +36,7 @@ class MainPage {
         updateDisplay(keyNumber.string, Action.ADD)
     }
 
-    private fun clickOperationKey(keyOperations: KeyOperations) {
+    fun clickOperationKey(keyOperations: KeyOperations) {
         key(keyOperations.id).perform(click())
         updateDisplay(action = Action.OPERATION)
     }
@@ -60,32 +60,27 @@ class MainPage {
         settings.perform(click())
     }
 
-    fun sumNumbers(firstNumber: KeyNumber? = KeyNumber.TWO, secondNumber: KeyNumber? = KeyNumber.FOUR) {
+    fun operateNumbers(operation: KeyOperations, firstNumber: KeyNumber? = KeyNumber.FOUR, secondNumber: KeyNumber? = KeyNumber.TWO) {
         clickNumberKey(firstNumber)
-        clickOperationKey(KeyOperations.PLUS)
+        clickOperationKey(operation)
         clickNumberKey(secondNumber)
         clickOperationKey(KeyOperations.EQUALS)
     }
 
-    fun subtractNumbers(firstNumber: KeyNumber? = KeyNumber.EIGHT, secondNumber: KeyNumber? = KeyNumber.FOUR) {
-        clickNumberKey(firstNumber)
-        clickOperationKey(KeyOperations.MINUS)
-        clickNumberKey(secondNumber)
+    fun operateWithDisplayedNumber(operation: KeyOperations, number: KeyNumber) {
+        clickOperationKey(operation)
+        clickNumberKey(number)
         clickOperationKey(KeyOperations.EQUALS)
     }
 
-    fun multiplyNumbers(firstNumber: KeyNumber? = KeyNumber.TWO, secondNumber: KeyNumber? = KeyNumber.FIVE) {
-        clickNumberKey(firstNumber)
-        clickOperationKey(KeyOperations.MULTIPLY)
-        clickNumberKey(secondNumber)
-        clickOperationKey(KeyOperations.EQUALS)
+    fun calculateRootOf(number: KeyNumber) {
+        clickNumberKey(number)
+        clickOperationKey(KeyOperations.POWER)
     }
 
-    fun divideNumbers(firstNumber: KeyNumber? = KeyNumber.SIX, secondNumber: KeyNumber? = KeyNumber.THREE) {
-        clickNumberKey(firstNumber)
-        clickOperationKey(KeyOperations.DIVIDE)
-        clickNumberKey(secondNumber)
-        clickOperationKey(KeyOperations.EQUALS)
+    fun getNegativeNumber(number: KeyNumber) {
+        // Since we cannot switch the sign of the number we subtract from zero to get a negative number ready to use
+        operateNumbers(KeyOperations.MINUS, KeyNumber.ZERO, number)
     }
 
     fun checkNumberDisplayed(number: String) {
