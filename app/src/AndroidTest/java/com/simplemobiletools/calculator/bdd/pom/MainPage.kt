@@ -32,11 +32,6 @@ class MainPage {
         resultField.check(matches(isDisplayed()))
     }
 
-    fun clickCancelBtn() {
-        cancelBtn.check(matches(isDisplayed()))
-        cancelBtn.perform(click())
-    }
-
     fun clickNumberKey(keyNumber: KeyNumber?) {
         key(keyNumber!!.id).perform(click())
         updateDisplay(keyNumber.string, Action.ADD)
@@ -92,7 +87,7 @@ class MainPage {
 
     fun getNegativeNumber(number: KeyNumber) {
         // Since we cannot switch the sign of the number we subtract from zero to get a negative number ready to use
-        operateNumbers(KeyOperations.MINUS, KeyNumber.ZERO, number)
+        operateWithDisplayedNumber(KeyOperations.MINUS, number)
     }
 
     fun checkNumberDisplayed(number: String) {
