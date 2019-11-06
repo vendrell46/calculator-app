@@ -1,7 +1,7 @@
 Feature: Root of negative number
 
   @Ready @Bug
-  @Root @NegativeNumber
+  @Root @NegativeNumber @Nan
   @Regression
   Scenario: Calculate root of negative 4
     Given app is ready to use

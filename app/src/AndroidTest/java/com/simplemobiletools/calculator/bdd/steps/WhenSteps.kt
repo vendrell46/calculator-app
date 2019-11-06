@@ -191,4 +191,9 @@ class WhenSteps : KoinComponent {
     fun i_click_key_number(keyNumber: KeyNumber) {
         mainPage.clickNumberKey(keyNumber)
     }
+
+    @When("^I click decimal key$")
+    fun click_decimal_key() {
+        mainPage.clickDecimalKey()
+    }
 }

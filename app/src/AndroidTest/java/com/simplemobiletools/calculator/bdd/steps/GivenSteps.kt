@@ -1,6 +1,7 @@
 package com.simplemobiletools.calculator.bdd.steps
 
 import com.simplemobiletools.calculator.bdd.action.KeyNumber
+import com.simplemobiletools.calculator.bdd.action.KeyOperations
 import com.simplemobiletools.calculator.bdd.pom.MainPage
 import cucumber.api.java.en.Given
 import org.koin.core.KoinComponent
@@ -27,6 +28,15 @@ class GivenSteps : KoinComponent {
         mainPage.run {
             clickNumberKey(KeyNumber.FOUR)
             clickNumberKey(KeyNumber.TWO)
+        }
+    }
+
+    @Given("^I have NaN displayed on screen$")
+    fun nan_displayed() {
+        app_started()
+        mainPage.run {
+            getNegativeNumber(KeyNumber.FOUR)
+            clickOperationKey(KeyOperations.ROOT)
         }
     }
 }

@@ -1,7 +1,7 @@
 Feature: Divide by zero
 
   @Ready @Bug
-  @Divide @ByZero
+  @Divide @ByZero @Nan
   @Regression
   Scenario: Divide by zero
     Given app is ready to use

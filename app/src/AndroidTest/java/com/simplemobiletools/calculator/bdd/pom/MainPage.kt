@@ -42,7 +42,7 @@ class MainPage {
         updateDisplay(action = Action.OPERATION)
     }
 
-    private fun clickDecimalKey() {
+    fun clickDecimalKey() {
         key(KeyOthers.DECIMAL.id).perform(click())
     }
 
