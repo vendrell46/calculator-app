@@ -1,4 +1,4 @@
-Feature: Subtract
+Feature: Subtract from negative number
 
   @Ready
   @Subtract @NegativeNumber

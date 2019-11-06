@@ -1,4 +1,4 @@
-Feature: Sum
+Feature: Sum numbers with decimals
 
   @Ready
   @Sum @Decimals

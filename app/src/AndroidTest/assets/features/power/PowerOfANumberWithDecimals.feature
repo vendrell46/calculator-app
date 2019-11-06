@@ -1,4 +1,4 @@
-Feature: Power
+Feature: Power of number with decimals
 
   @Ready
   @Power @Decimals

@@ -1,4 +1,4 @@
-Feature: Subtract
+Feature: Subtract numbers with decimals
 
   @Ready
   @Subtract @Decimals

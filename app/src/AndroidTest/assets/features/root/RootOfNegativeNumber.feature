@@ -1,4 +1,4 @@
-Feature: Root
+Feature: Root of negative number
 
   @Ready @Bug
   @Root @NegativeNumber

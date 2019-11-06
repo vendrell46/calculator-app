@@ -1,4 +1,4 @@
-Feature: Multiply
+Feature: Multiply negative
 
   @Ready
   @Multiply @NegativeNumber

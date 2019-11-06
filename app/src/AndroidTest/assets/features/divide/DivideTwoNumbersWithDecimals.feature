@@ -1,4 +1,4 @@
-Feature: Divide
+Feature: Divide with decimals
 
   @Ready
   @Divide @Decimals

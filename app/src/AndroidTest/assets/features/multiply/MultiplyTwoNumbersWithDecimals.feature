@@ -1,4 +1,4 @@
-Feature: Multiply
+Feature: Multiply with decimals
 
   @Ready
   @Multiply @Decimals

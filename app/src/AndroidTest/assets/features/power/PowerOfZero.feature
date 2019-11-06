@@ -1,4 +1,4 @@
-Feature: Power
+Feature: Power of zero
 
   @Ready
   @Power @ByZero

@@ -21,9 +21,10 @@ class WhenSteps : KoinComponent {
     @When("^sum two decimal numbers, 3.3 plus 1.7$")
     fun sum_decimal_numbers() {
         mainPage.run {
-            enterDecimalNumber(KeyNumber.THREE, KeyNumber.SEVEN)
+            enterDecimalNumber(KeyNumber.THREE, KeyNumber.THREE)
             clickOperationKey(KeyOperations.PLUS)
             enterDecimalNumber(KeyNumber.ONE, KeyNumber.SEVEN)
+            clickOperationKey(KeyOperations.EQUALS)
         }
     }
 
@@ -46,6 +47,7 @@ class WhenSteps : KoinComponent {
             enterDecimalNumber(KeyNumber.FOUR, KeyNumber.FIVE)
             clickOperationKey(KeyOperations.MINUS)
             enterDecimalNumber(KeyNumber.ONE, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.EQUALS)
         }
     }
 
@@ -68,6 +70,7 @@ class WhenSteps : KoinComponent {
             enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
             clickOperationKey(KeyOperations.MULTIPLY)
             enterDecimalNumber(KeyNumber.ONE, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.EQUALS)
         }
     }
 
@@ -90,6 +93,7 @@ class WhenSteps : KoinComponent {
             enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
             clickOperationKey(KeyOperations.DIVIDE)
             enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
+            clickOperationKey(KeyOperations.EQUALS)
         }
     }
 
@@ -106,12 +110,13 @@ class WhenSteps : KoinComponent {
         mainPage.operateNumbers(KeyOperations.PERCENT, firstNumber, secondNumber)
     }
 
-    @When("^I calculate percentage, 2.5 percent of (.*)$")
+    @When("^I enter in calculator 2.5 percent of (.*)$")
     fun calculate_percentage_decimal_number(number: KeyNumber) {
         mainPage.run {
             enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
             clickOperationKey(KeyOperations.PERCENT)
             clickNumberKey(number)
+            clickOperationKey(KeyOperations.EQUALS)
         }
     }
 
@@ -134,14 +139,15 @@ class WhenSteps : KoinComponent {
             enterDecimalNumber(KeyNumber.TWO, KeyNumber.FIVE)
             clickOperationKey(KeyOperations.POWER)
             clickNumberKey(number)
+            clickOperationKey(KeyOperations.EQUALS)
         }
     }
 
-    @When("^I calculate negative (.*) to the power of (.*)$")
+    @When("^I enter in calculator negative (.*) to the power of (.*)$")
     fun calculate_power_of_negative_number(negativeNumber: KeyNumber, number: KeyNumber) {
         mainPage.run {
             getNegativeNumber(negativeNumber)
-            operateNumbers(KeyOperations.POWER, number)
+            operateWithDisplayedNumber(KeyOperations.POWER, number)
         }
     }
 

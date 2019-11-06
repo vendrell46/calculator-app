@@ -1,4 +1,4 @@
-Feature: Percentage
+Feature: Percentage of zero
 
   @Ready
   @Percentage @ByZero

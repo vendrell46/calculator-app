@@ -24,11 +24,17 @@ class MainPage {
     private val settings = onView(withText(R.string.settings))
     private val about = onView(withText(R.string.about))
     private val clearBtn = onView(withId(R.id.btn_clear))
+    private val cancelBtn = onView(withText("CANCEL"))
 
     var displayedNumber = "0"
 
     fun mainPageLoaded() {
         resultField.check(matches(isDisplayed()))
+    }
+
+    fun clickCancelBtn() {
+        cancelBtn.check(matches(isDisplayed()))
+        cancelBtn.perform(click())
     }
 
     fun clickNumberKey(keyNumber: KeyNumber?) {
@@ -55,11 +61,10 @@ class MainPage {
         updateDisplay(action = Action.CLEAR_ALL)
     }
 
-    fun enterDecimalNumber(number: KeyNumber, firstDecimal: KeyNumber, secondDecimal: KeyNumber = KeyNumber.ZERO) {
+    fun enterDecimalNumber(number: KeyNumber, firstDecimal: KeyNumber) {
         clickNumberKey(number)
         clickDecimalKey()
         clickNumberKey(firstDecimal)
-        clickNumberKey(secondDecimal)
     }
 
     fun openSettings() {
@@ -82,7 +87,7 @@ class MainPage {
 
     fun calculateRootOf(number: KeyNumber) {
         clickNumberKey(number)
-        clickOperationKey(KeyOperations.POWER)
+        clickOperationKey(KeyOperations.ROOT)
     }
 
     fun getNegativeNumber(number: KeyNumber) {

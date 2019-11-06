@@ -1,4 +1,4 @@
-Feature: Root
+Feature: Root of number with decimals
 
   @Ready
   @Root @Decimals

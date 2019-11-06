@@ -1,4 +1,4 @@
-Feature: Multiply
+Feature: Multiply by zero
 
   @Ready
   @Multiply @ByZero

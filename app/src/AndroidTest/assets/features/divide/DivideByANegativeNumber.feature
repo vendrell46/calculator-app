@@ -1,4 +1,4 @@
-Feature: Divide
+Feature: Divide negative
 
   @Ready
   @Divide @NegativeNumber

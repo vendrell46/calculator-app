@@ -1,6 +1,6 @@
-Feature: Divide
+Feature: Divide by zero
 
-  @Ready
+  @Ready @Bug
   @Divide @ByZero
   @Regression
   Scenario: Divide by zero

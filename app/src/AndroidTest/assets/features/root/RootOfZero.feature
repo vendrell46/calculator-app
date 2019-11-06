@@ -1,4 +1,4 @@
-Feature: Root
+Feature: Root of zero
 
   @Ready
   @Root @ByZero

@@ -1,4 +1,4 @@
-Feature: Sum
+Feature: Sum to a negative number
 
   @Ready
   @Sum @NegativeNumber

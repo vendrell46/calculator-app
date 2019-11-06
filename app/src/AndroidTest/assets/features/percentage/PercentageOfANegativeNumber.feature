@@ -1,4 +1,4 @@
-Feature: Percentage
+Feature: Percentage with negative number
 
   @Ready
   @Percentage @NegativeNumber
