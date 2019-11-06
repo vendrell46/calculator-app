@@ -196,4 +196,9 @@ class WhenSteps : KoinComponent {
     fun click_decimal_key() {
         mainPage.clickDecimalKey()
     }
+
+    @When("^I do (.*) operation with displayed result$")
+    fun operate_with_displayed_result(keyOperations: KeyOperations) {
+        mainPage.operateWithDisplayedNumber(keyOperations, KeyNumber.TWO)
+    }
 }
