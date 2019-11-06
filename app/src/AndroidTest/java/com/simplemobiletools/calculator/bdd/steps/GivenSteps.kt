@@ -39,4 +39,10 @@ class GivenSteps : KoinComponent {
             clickOperationKey(KeyOperations.ROOT)
         }
     }
+
+    @Given("^a result is displayed after an operation$")
+    fun result_displayed_after_operation() {
+        app_started()
+        mainPage.operateNumbers(KeyOperations.PLUS)
+    }
 }
